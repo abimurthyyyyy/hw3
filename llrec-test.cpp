@@ -68,7 +68,12 @@ void dealloc(Node* head)
 // -----------------------------------------------
 
 
-
+struct boom
+{
+    bool operator()(int& x){
+        return x ==20;
+    }
+};
 
 
 int main(int argc, char* argv[])
@@ -85,15 +90,11 @@ int main(int argc, char* argv[])
     cout << "Original list: ";
     print(head);
     Node* smaller;
-		Node* larger;
-    llpivot(head, smaller, larger, 10);
-    // Test out your linked list code
-		print(head);
-    print(smaller);
-    print(larger);
+	Node* larger;
+    llfilter(head, boom());
+    print(head);
     dealloc(head);
-    dealloc(smaller);
-    dealloc(larger);
+    
 
     
     return 0;
